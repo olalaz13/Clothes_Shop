@@ -40,6 +40,31 @@ function saveCart() {
 
 cart = loadCart();
 
+// ================== CART PANEL INITIALIZATION ==================
+function initCartPanel() {
+    // Chỉ tạo cart panel nếu chưa tồn tại
+    if (!document.getElementById('cartPanel')) {
+        const cartPanel = document.createElement('div');
+        cartPanel.id = 'cartPanel';
+        cartPanel.style.cssText = 'position:fixed;top:0;right:-400px;width:360px;height:100%;background:#fff;box-shadow:-2px 0 6px rgba(0,0,0,.15);transition:.3s;padding:16px;overflow:auto;z-index:2000';
+        cartPanel.innerHTML = `
+            <h2 style="margin:0 0 16px">Your Cart</h2>
+            <div id="cartItems"></div>
+            <div id="cartTotal" style="margin-top:16px;font-weight:700"></div>
+            <button id="closeCart" style="margin-top:20px;padding:8px 12px;border:none;background:#333;color:#fff;border-radius:6px;cursor:pointer">Close</button>
+        `;
+        document.body.appendChild(cartPanel);
+        
+        // Gắn sự kiện close
+        document.getElementById('closeCart').addEventListener('click', () => {
+            cartPanel.style.right = '-400px';
+        });
+        
+        return cartPanel;
+    }
+    return document.getElementById('cartPanel');
+}
+
 // ================== CATEGORIES ==================
 function uniqueCats() {
   const cats = new Set(products.map(p => p.cat));
@@ -47,6 +72,7 @@ function uniqueCats() {
 }
 
 function renderCats() {
+  if (!categoriesEl) return;
   categoriesEl.innerHTML = '';
   uniqueCats().forEach(c => {
     const el = document.createElement('button');
@@ -59,14 +85,16 @@ function renderCats() {
 
 // ================== GRID ==================
 function render() {
-  let q = searchInput.value.trim().toLowerCase();
+  if (!grid) return;
+  
+  let q = searchInput ? searchInput.value.trim().toLowerCase() : '';
   let arr = products.filter(p => (activeCat === 'All' || p.cat === activeCat) &&
     (p.title.toLowerCase().includes(q) ||
       p.cat.toLowerCase().includes(q) ||
       p.desc.toLowerCase().includes(q)));
 
   // sort
-  const sort = sortSelect.value;
+  const sort = sortSelect ? sortSelect.value : 'popular';
   if (sort === 'asc') arr.sort((a, b) => a.price - b.price);
   if (sort === 'desc') arr.sort((a, b) => b.price - a.price);
 
@@ -96,76 +124,65 @@ function render() {
     grid.appendChild(card);
   });
 
-  countTxt.textContent = ` — ${arr.length} items`;
+  if (countTxt) {
+    countTxt.textContent = ` — ${arr.length} items`;
+  }
 }
 
 // ================== MODAL ==================
 function quickView(id) {
   const p = products.find(x => x.id === id);
-  document.getElementById('mThumb').style.backgroundImage = `url(${p.img})`;
-  document.getElementById('mTitle').textContent = p.title;
-  document.getElementById('mCat').textContent = p.cat;
-  document.getElementById('mPrice').textContent = `$${p.price}`;
-  document.getElementById('mDesc').textContent = p.desc;
-  document.getElementById('modal').classList.add('open');
-  document.getElementById('addCartModal').dataset.id = id;
+  if (!p) return;
+  
+  const mThumb = document.getElementById('mThumb');
+  const mTitle = document.getElementById('mTitle');
+  const mCat = document.getElementById('mCat');
+  const mPrice = document.getElementById('mPrice');
+  const mDesc = document.getElementById('mDesc');
+  const modal = document.getElementById('modal');
+  
+  if (mThumb) mThumb.style.backgroundImage = `url(${p.img})`;
+  if (mTitle) mTitle.textContent = p.title;
+  if (mCat) mCat.textContent = p.cat;
+  if (mPrice) mPrice.textContent = `$${p.price}`;
+  if (mDesc) mDesc.textContent = p.desc;
+  
+  const addCartModal = document.getElementById('addCartModal');
+  if (addCartModal) addCartModal.dataset.id = id;
+  
+  if (modal) modal.classList.add('open');
 }
 
-document.getElementById('closeModal').onclick = () => document.getElementById('modal').classList.remove('open');
-document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') document.getElementById('modal').classList.remove('open'); });
+function closeModal() {
+  const modal = document.getElementById('modal');
+  if (modal) modal.classList.remove('open');
+}
 
 // ================== CART ==================
 function addToCart(id) {
   const p = products.find(x => x.id === id);
+  if (!p) return;
+  
   const found = cart.find(c => c.id === id);
   if (found) found.qty++;
   else cart.push({ id: p.id, title: p.title, price: p.price, qty: 1 });
   saveCart();
   updateCartUI();
   showToast(`Đã thêm <b>${p.title}</b> vào giỏ hàng!`);
-// ================== TOAST ==================
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  if (!toast) return;
-  toast.innerHTML = message;
-  toast.classList.add('show');
-  clearTimeout(window._toastTimeout);
-  window._toastTimeout = setTimeout(() => {
-    toast.classList.remove('show');
-  }, 2000);
-}
-}
-
-document.getElementById('addCartModal').onclick = function () {
-  addToCart(Number(this.dataset.id));
-  document.getElementById('modal').classList;
 }
 
 function updateCartUI() {
   const totalItems = cart.reduce((s, i) => s + i.qty, 0);
-  cartCount.textContent = totalItems;
+  if (cartCount) cartCount.textContent = totalItems;
   renderCartPanel();
   updateMobileCartCount();
   updateDesktopCartCount();
 }
 
-// ================== CART PANEL ==================
-const cartPanel = document.createElement('div');
-cartPanel.id = 'cartPanel';
-cartPanel.style.cssText = 'position:fixed;top:0;right:-400px;width:360px;height:100%;background:#fff;box-shadow:-2px 0 6px rgba(0,0,0,.15);transition:.3s;padding:16px;overflow:auto;z-index:2000';
-cartPanel.innerHTML = `
-  <h2 style="margin:0 0 16px">Your Cart</h2>
-  <div id="cartItems"></div>
-  <div id="cartTotal" style="margin-top:16px;font-weight:700"></div>
-  <button id="closeCart" style="margin-top:20px;padding:8px 12px;border:none;background:#333;color:#fff;border-radius:6px;cursor:pointer">Close</button>
-`;
-document.body.appendChild(cartPanel);
-
-document.getElementById('cartBtn').onclick = () => { cartPanel.style.right = cartPanel.style.right === '0px' ? '-400px' : '0px'; };
-document.getElementById('closeCart').onclick = () => cartPanel.style.right = '-400px';
-
 function renderCartPanel() {
   const itemsEl = document.getElementById('cartItems');
+  if (!itemsEl) return;
+  
   itemsEl.innerHTML = '';
   let total = 0;
   cart.forEach(item => {
@@ -179,7 +196,9 @@ function renderCartPanel() {
       </div>`;
     itemsEl.appendChild(row);
   });
-  document.getElementById('cartTotal').textContent = `Total: $${total}`;
+  
+  const cartTotal = document.getElementById('cartTotal');
+  if (cartTotal) cartTotal.textContent = `Total: $${total}`;
 }
 
 function removeFromCart(id) {
@@ -188,10 +207,26 @@ function removeFromCart(id) {
   updateCartUI();
 }
 
+// ================== TOAST ==================
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.innerHTML = message;
+  toast.classList.add('show');
+  clearTimeout(window._toastTimeout);
+  window._toastTimeout = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2000);
+}
+
 // ================== FAVORITE ==================
-const favBtn = document.getElementById("favBtn");
-favBtn.addEventListener("click", () => {
-  const title = document.getElementById('mTitle').textContent;
+function toggleFavorite() {
+  const favBtn = document.getElementById("favBtn");
+  const mTitle = document.getElementById('mTitle');
+  
+  if (!favBtn || !mTitle) return;
+  
+  const title = mTitle.textContent;
   if (favorites.includes(title)) {
     favorites = favorites.filter(f => f !== title);
     favBtn.textContent = "❤ Favorite";
@@ -201,30 +236,35 @@ favBtn.addEventListener("click", () => {
     favBtn.textContent = "★ Favorited";
     alert(`${title} added to favorites`);
   }
-});
+}
 
 // ================== SEARCH & SORT ==================
-searchInput.addEventListener('input', () => render());
-sortSelect.addEventListener('change', () => render());
+function setupSearchAndSort() {
+  if (searchInput) {
+    searchInput.addEventListener('input', () => render());
+  }
+  if (sortSelect) {
+    sortSelect.addEventListener('change', () => render());
+  }
+}
 
 // ================== MOBILE MENU ==================
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-hamburgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-
 function renderMobileMenu() {
+  if (!mobileMenu) return;
+  
   const user = localStorage.getItem('username');
   const totalItems = cart.reduce((s, i) => s + i.qty, 0);
 
   mobileMenu.innerHTML = `
       <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
       </ul>
       <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px;">
           ${user
-      ? `<span>👋 Welcome, <a href="#">${user}</a></span>
+      ? `<span>👋 Welcome, <a href="user.html">${user}</a></span>
                <button id="logoutMobileBtn" class="btn">Logout</button>
                <button id="cartMobileBtn" class="btn">🛒 Cart <span id="cartCountMobile" style="color: #000;" class="badge">${totalItems}</span></button>`
       : `<button id="signinMobileBtn" class="btn">Sign in</button>`}
@@ -233,25 +273,29 @@ function renderMobileMenu() {
 
   const logoutBtn = document.getElementById('logoutMobileBtn');
   if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => { localStorage.removeItem('username'); renderMobileMenu(); renderDesktopHeader(); location.reload(); });
+    logoutBtn.addEventListener('click', () => { 
+      localStorage.removeItem('username'); 
+      renderMobileMenu(); 
+      renderDesktopHeader(); 
+      location.reload(); 
+    });
   }
 
   const signinBtn = document.getElementById('signinMobileBtn');
   if (signinBtn) {
     signinBtn.addEventListener('click', () => {
-      const name = prompt("Enter username:");
-      if (name) {
-        localStorage.setItem('username', name);
-        renderMobileMenu();
-        renderDesktopHeader();
-      }
-      mobileMenu.classList.remove('open');
+      window.location.href = 'signin.html';
     });
   }
 
   const cartBtnMobile = document.getElementById('cartMobileBtn');
   if (cartBtnMobile) {
-    cartBtnMobile.addEventListener('click', () => { cartPanel.style.right = cartPanel.style.right === '0px' ? '-400px' : '0px'; mobileMenu.classList.remove('open'); });
+    cartBtnMobile.addEventListener('click', () => {
+      const panel = initCartPanel();
+      panel.style.right = panel.style.right === '0px' ? '-400px' : '0px';
+      renderCartPanel();
+      mobileMenu.classList.remove('open');
+    });
   }
 }
 
@@ -262,11 +306,13 @@ function updateMobileCartCount() {
 
 // ================== DESKTOP HEADER ==================
 function renderDesktopHeader() {
+  if (!desktopHeader) return;
+  
   const user = localStorage.getItem('username');
   const totalItems = cart.reduce((s, i) => s + i.qty, 0);
 
   desktopHeader.innerHTML = user
-    ? `<span>👋 Welcome, <a href="#">${user}</a></span>
+    ? `<span>👋 Welcome, <a href="user.html">${user}</a></span>
        <button id="logoutDesktopBtn" class="btn">Logout</button>
        <button id="cartDesktopBtn" class="btn">🛒 Cart <span id="cartCountDesktop" style="color: #000;" class="badge">${totalItems}</span></button>`
     : `<button id="signinDesktopBtn" class="btn">Sign in</button>`;
@@ -275,49 +321,25 @@ function renderDesktopHeader() {
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
       localStorage.removeItem('username');
-
-      // Reset về HTML gốc
-      desktopHeader.innerHTML = `
-      <button class="btn" onclick="window.location.href='signin.html'">Sign in</button>
-      <button class="cart-btn" id="cartBtn">
-        <span class="cart-icon">
-          🛒
-        </span>
-        <span class="cart-text">Cart</span>
-        <span id="cartCount" class="badge">${cart.reduce((s, i) => s + i.qty, 0)}</span>
-      </button>
-    `;
-
-      // Gắn lại sự kiện cho nút Cart
-      const cartBtn = document.getElementById('cartBtn');
-      if (cartBtn) {
-        cartBtn.addEventListener('click', () => {
-          cartPanel.style.right = cartPanel.style.right === '0px' ? '-400px' : '0px';
-        });
-      }
-
-      // Cập nhật mobile menu
+      renderDesktopHeader();
       renderMobileMenu();
+      location.reload();
     });
   }
-
 
   const signinBtn = document.getElementById('signinDesktopBtn');
   if (signinBtn) {
     signinBtn.addEventListener('click', () => {
-      const name = prompt("Enter username:");
-      if (name) {
-        localStorage.setItem('username', name);
-        renderDesktopHeader();
-        renderMobileMenu();
-      }
+      window.location.href = 'signin.html';
     });
   }
 
   const cartBtn = document.getElementById('cartDesktopBtn');
   if (cartBtn) {
     cartBtn.addEventListener('click', () => {
-      cartPanel.style.right = cartPanel.style.right === '0px' ? '-400px' : '0px';
+      const panel = initCartPanel();
+      panel.style.right = panel.style.right === '0px' ? '-400px' : '0px';
+      renderCartPanel();
     });
   }
 }
@@ -327,27 +349,113 @@ function updateDesktopCartCount() {
   if (el) el.textContent = cart.reduce((s, i) => s + i.qty, 0);
 }
 
-// ================== DROPDOWN DYNAMIC DIRECTION ==================
-
-const select = document.getElementById("sizeSelect");
-const wrapper = document.getElementById("sizeDropdown");
-
-select.addEventListener("click", () => {
-  const rect = select.getBoundingClientRect();
-  const spaceBelow = window.innerHeight - rect.bottom;
-  const dropdownHeight = 500;
-
-  if (spaceBelow < dropdownHeight) {
-    wrapper.classList.add("dropup");
-  } else {
-    wrapper.classList.remove("dropup");
+// ================== CART BUTTON EVENT HANDLER ==================
+function setupCartButton() {
+  const cartBtn = document.getElementById('cartBtn');
+  if (cartBtn) {
+    cartBtn.addEventListener('click', () => {
+      const panel = initCartPanel();
+      panel.style.right = panel.style.right === '0px' ? '-400px' : '0px';
+      renderCartPanel();
+    });
   }
-});
+}
 
+// ================== MODAL EVENT HANDLERS ==================
+function setupModalEvents() {
+  const closeModalBtn = document.getElementById('closeModal');
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closeModal);
+  }
+
+  const modal = document.getElementById('modal');
+  if (modal) {
+    modal.addEventListener('click', e => { 
+      if (e.target.id === 'modal') closeModal(); 
+    });
+  }
+
+  const addCartModal = document.getElementById('addCartModal');
+  if (addCartModal) {
+    addCartModal.addEventListener('click', function () {
+      addToCart(Number(this.dataset.id));
+      closeModal();
+    });
+  }
+
+  const favBtn = document.getElementById('favBtn');
+  if (favBtn) {
+    favBtn.addEventListener('click', toggleFavorite);
+  }
+}
+
+// ================== DROPDOWN DYNAMIC DIRECTION ==================
+function setupDropdownDirection() {
+  const select = document.getElementById("sizeSelect");
+  const wrapper = document.getElementById("sizeDropdown");
+
+  if (select && wrapper) {
+    select.addEventListener("click", () => {
+      const rect = select.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const dropdownHeight = 500;
+
+      if (spaceBelow < dropdownHeight) {
+        wrapper.classList.add("dropup");
+      } else {
+        wrapper.classList.remove("dropup");
+      }
+    });
+  }
+}
+
+// ================== NAVBAR HIGHLIGHT ==================
+function highlightCurrentPage() {
+  const currentPage = window.location.pathname.split("/").pop();
+  const menuItems = document.querySelectorAll(".menu a");
+
+  menuItems.forEach((item) => {
+    if (item.getAttribute("href") === currentPage) {
+      item.style.color = "var(--accent)";
+      item.style.fontWeight = "600";
+    }
+  });
+}
+
+// ================== MOBILE MENU TOGGLE ==================
+function setupMobileMenuToggle() {
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (hamburgerBtn && mobileMenu) {
+    hamburgerBtn.addEventListener("click", function () {
+      mobileMenu.classList.toggle("open");
+    });
+  }
+
+  // Close mobile menu when clicking on links
+  const mobileMenuLinks = document.querySelectorAll("#mobileMenu a");
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      mobileMenu.classList.remove("open");
+    });
+  });
+}
 
 // ================== INIT ==================
-renderCats();
-render();
-updateCartUI();
-renderMobileMenu();
-renderDesktopHeader();
+function init() {
+  renderCats();
+  render();
+  updateCartUI();
+  renderMobileMenu();
+  renderDesktopHeader();
+  setupCartButton();
+  setupModalEvents();
+  setupSearchAndSort();
+  setupDropdownDirection();
+  highlightCurrentPage();
+  setupMobileMenuToggle();
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', init);
