@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clothes Shop</title>
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="nav">
+        <div class="brand">
+            <div class="logo">CS</div>
+            <div>
+                <div style="font-weight:700">ClothesShop</div>
+                <div style="font-size:12px;color:var(--muted)">Everyday comfort & style</div>
+            </div>
+        </div>
+
+        <!-- Menu -->
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="search">
+            <input id="search" placeholder="Search clothes, size, color..." />
+            <span class="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
+                    <path
+                        d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z">
+                    </path>
+                </svg>
+            </span>
+        </div>
+
+        <!-- Hamburger cho mobile -->
+        <button class="hamburger" id="hamburgerBtn">☰</button>
+
+        <div class="links" id="desktopHeaderRight">
+            <button class="btn" onclick="window.location.href='signin.html'">Sign in</button>
+            <button class="cart-btn" id="cartBtn">
+                <span class="cart-icon">
+                    🛒
+                </span>
+                <span class="cart-text">Cart</span>
+                <span id="cartCount" class="badge">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu"></div>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1>Về Chúng Tôi</h1>
+            <p>Hành trình 1 tháng mang đến những sản phẩm thời trang chất lượng với giá cả hợp lý</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="grid-wrap">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Câu Chuyện Của Chúng Tôi</h2>
+                    <p>ClothesShop được thành lập vào năm 2025 với sứ mệnh mang đến những sản phẩm thời trang chất lượng cao với mức giá phải chăng. Từ một cửa hàng nhỏ, chúng tôi đã định hướng phát triển thành thương hiệu được yêu thích với hơn 50,000 khách hàng trên toàn quốc.</p>
+                    <p>Chúng tôi tin rằng thời trang không chỉ là mặc đẹp, mà còn là cách thể hiện cá tính và phong cách sống của mỗi người. Mỗi sản phẩm của ClothesShop đều được chọn lọc kỹ lưỡng để đảm bảo chất lượng và tính thẩm mỹ.</p>
+                    
+                    <div class="story-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">1+</span>
+                            <span class="stat-label">Tháng Kinh Nghiệm</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">1+</span>
+                            <span class="stat-label">Khách Hàng</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">8+</span>
+                            <span class="stat-label">Sản Phẩm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Our Story">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="grid-wrap">
+            <div class="section-title">
+                <h2>Giá Trị Cốt Lõi</h2>
+                <p>Những nguyên tắc định hướng cho mọi hoạt động của chúng tôi</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">⭐</div>
+                    <h3>Chất Lượng</h3>
+                    <p>Mỗi sản phẩm đều trải qua quy trình kiểm định chất lượng nghiêm ngặt để đảm bảo mang đến trải nghiệm tốt nhất cho khách hàng.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">💝</div>
+                    <h3>Khách Hàng</h3>
+                    <p>Khách hàng là trung tâm của mọi quyết định. Chúng tôi luôn lắng nghe và cải thiện để phục vụ tốt hơn.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3>Bền Vững</h3>
+                    <p>Cam kết phát triển bền vững thông qua việc sử dụng vật liệu thân thiện với môi trường và quy trình sản xuất có trách nhiệm.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h3>Đổi Mới</h3>
+                    <p>Không ngừng sáng tạo và cập nhật xu hướng để mang đến những sản phẩm thời trang hiện đại và độc đáo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="grid-wrap">
+            <div class="section-title">
+                <h2>Đội Ngũ Của Chúng Tôi</h2>
+                <p>Những người đứng sau thành công của ClothesShop</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/470212809_1116666446673990_7850856854596613456_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=XEqulKl8wSAQ7kNvwG19jNt&_nc_oc=AdldFaEwMkO3Wp5fVTwvuXTMZ0YFlRRVSKtEpwqWuZKUSkXeQB3MwBrS2WgwdTZCH1I&_nc_zt=23&_nc_ht=scontent.fsgn5-6.fna&_nc_gid=xCjq9OH8tHgc_gCXZ9kmFQ&oh=00_AfelTPVg5W65JxOQrNHrrI7Geo08fMiFYiNRGnw1NX9Tyw&oe=68EA8441" alt="CEO" class="team-image">
+                    <div class="team-info">
+                        <h3>Phan Hữu Phước</h3>
+                        <span class="position">Founder & CEO</span>
+                        <p>Với 0 năm kinh nghiệm trong ngành thời trang, anh đã thành lập và dẫn dắt ClothesShop từ đầu cho tới khi đi vào triển khai.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/470875030_1116663930007575_3051771155781188634_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IHOBcUCoB4IQ7kNvwEQ2mym&_nc_oc=AdnqCOg7XQmQeIVbX7js3-WO2GiMq94RBwRd4DosuJR7sMPPCKb5uJS6lVNm397QPFg&_nc_zt=23&_nc_ht=scontent.fsgn5-6.fna&_nc_gid=p0p6BYkVXQPP7XlQDW817w&oh=00_AfcAj3LGCrEYmiKIzbVSwZBmz42oKX2ccRub6jjRPa0QAg&oe=68EA9532" alt="Head Designer" class="team-image">
+                    <div class="team-info">
+                        <h3>Phan Hữu Phước</h3>
+                        <span class="position">Head Designer</span>
+                        <p>Với con mắt thẩm mỹ của mình, anh đã mang đến những thiết kế độc đáo kết hợp giữa truyền thống và hiện đại.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-behance"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="https://scontent.fsgn5-13.fna.fbcdn.net/v/t1.6435-9/161415906_262491058758204_1817756860509065941_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=10_6w9tKAOAQ7kNvwHpo7x7&_nc_oc=AdmjcMr9fnsafxkugd0NtvkJwlM2IKLdKgHO9s09QOp3MNBClQjx8m_uKZjIJb4By68&_nc_zt=23&_nc_ht=scontent.fsgn5-13.fna&_nc_gid=9EUVF7zCH0c0MlrH155MnQ&oh=00_AfYphNVcqZqaZUr4alNUSmVLmCSrCDqKkVayw0xRARz93A&oe=69055E45" alt="Marketing Manager" class="team-image">
+                    <div class="team-info">
+                        <h3>Phan Hữu Phước</h3>
+                        <span class="position">Marketing Manager</span>
+                        <p>Chuyên gia marketing với 1 tháng kinh nghiệm, anh đã xây dựng chiến lược quản bá ban đầu của shop và chuẩn bị đi vào triển khai.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="grid-wrap">
+            <div class="mission-content">
+                <div class="quote">
+                    "Thời trang không chỉ là mặc đẹp, mà là cách bạn thể hiện bản thân với thế giới"
+                </div>
+                <p class="mission-text">
+                    Sứ mệnh của chúng tôi là mang đến những sản phẩm thời trang chất lượng, giúp mỗi khách hàng tự tin thể hiện phong cách cá nhân. Chúng tôi tin rằng mỗi người đều xứng đáng có được những bộ trang phục không chỉ đẹp mà còn thoải mái và phù hợp với lối sống.
+                </p>
+                <div class="author">- Phan Hữu Phước, Founder ClothesShop</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="grid-wrap">
+            <h2>Sẵn Sàng Khám Phá?</h2>
+            <p>Tham gia cộng đồng với 1+ khách hàng đã tin tưởng lựa chọn ClothesShop</p>
+            <div class="cta-buttons">
+                <a href="shop.html" class="btn-white">Mua Sắm Ngay</a>
+                <a href="contact.html" class="btn-outline-white">Liên Hệ Chúng Tôi</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div style="margin-top: 50px;" class="footer-brand">
+                <div class="brand" style="display: flex; justify-content: center; align-items: center;">
+                    <div style="margin-bottom: 9px;width: 55px;height: 55px;background: linear-gradient(135deg, var(--accent), #df6767);"
+                        class="logo">CS</div>
+                    <div>
+                        <div style="font-size: 20px;font-weight:700">ClothesShop</div>
+                        <div style="font-size:15px;color:var(--muted)">Everyday comfort & style</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-services">
+                <h2>Our Services</h2>
+                <ul class="text-center">
+                    <li><a href="#">Free Shipping</a></li>
+                    <li><a href="#">24/7 Customer Support</a></li>
+                    <li><a href="#">Easy Returns</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h2>Contact</h2>
+                <p>Email: info@clothesshop.com</p>
+                <p>Phone: +84 123 456 789</p>
+                <div class="social-icons">
+                    <a href="#"><img width="30" src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000"
+                            alt="Facebook"></a>
+                    <a href="#"><img width="30" src="https://img.icons8.com/?size=100&id=13963&format=png&color=000000"
+                            alt="Twitter"></a>
+                    <a href="#"><img width="30" src="https://img.icons8.com/?size=100&id=32323&format=png&color=000000"
+                            alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 ClothesShop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    
+
+    <!-- Script -->
+    <script src="js/about.js"></script>
+    <script src="js/script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

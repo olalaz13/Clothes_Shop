@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clothes Shop</title>
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="nav">
+        <div class="brand">
+            <div class="logo">CS</div>
+            <div>
+                <div style="font-weight:700">ClothesShop</div>
+                <div style="font-size:12px;color:var(--muted)">Everyday comfort & style</div>
+            </div>
+        </div>
+
+        <!-- Menu -->
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="search">
+            <input id="search" placeholder="Search clothes, size, color..." />
+            <span class="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
+                    <path
+                        d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z">
+                    </path>
+                </svg>
+            </span>
+        </div>
+
+        <!-- Hamburger cho mobile -->
+        <button class="hamburger" id="hamburgerBtn">☰</button>
+
+        <div class="links" id="desktopHeaderRight">
+            <button class="btn" onclick="window.location.href='signin.html'">Sign in</button>
+            <button class="cart-btn" id="cartBtn">
+                <span class="cart-icon">
+                    🛒
+                </span>
+                <span class="cart-text">Cart</span>
+                <span id="cartCount" class="badge">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu"></div>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <h1>Liên Hệ Với Chúng Tôi</h1>
+            <p>Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn 24/7</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="grid-wrap">
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>Thông Tin Liên Hệ</h2>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <h3>Địa Chỉ</h3>
+                            <p>123 Đường ABC, Quận 1<br>Thành phố Hồ Chí Minh, Việt Nam</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div class="info-content">
+                            <h3>Điện Thoại</h3>
+                            <p>
+                                <a href="tel:+84123456789">+84 123 456 789</a><br>
+                                <a href="tel:+84987654321">+84 987 654 321</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <div class="info-content">
+                            <h3>Email</h3>
+                            <p>
+                                <a href="mailto:info@clothesshop.com">info@clothesshop.com</a><br>
+                                <a href="mailto:support@clothesshop.com">support@clothesshop.com</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">🕒</div>
+                        <div class="info-content">
+                            <h3>Giờ Làm Việc</h3>
+                            <p>
+                                Thứ 2 - Thứ 6: 8:00 - 22:00<br>
+                                Thứ 7 - Chủ Nhật: 9:00 - 21:00
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">🌐</div>
+                        <div class="info-content">
+                            <h3>Theo Dõi Chúng Tôi</h3>
+                            <p>Kết nối với chúng tôi trên mạng xã hội</p>
+                            <div class="social-contact">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="#"><i class="bi bi-twitter"></i></a>
+                                <a href="#"><i class="bi bi-tiktok"></i></a>
+                                <a href="#"><i class="bi bi-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2>Gửi Tin Nhắn</h2>
+                    
+                    <div id="successMessage" class="success-message">
+                        ✅ Cảm ơn bạn! Tin nhắn của bạn đã được gửi thành công. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.
+                    </div>
+                    
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="firstName">Họ *</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" required>
+                                <div class="error-message" id="firstNameError">Vui lòng nhập họ của bạn</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="lastName">Tên *</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" required>
+                                <div class="error-message" id="lastNameError">Vui lòng nhập tên của bạn</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                            <div class="error-message" id="emailError">Vui lòng nhập email hợp lệ</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Số Điện Thoại</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                            <div class="error-message" id="phoneError">Vui lòng nhập số điện thoại hợp lệ</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Chủ Đề *</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="">Chọn chủ đề...</option>
+                                <option value="product">Thông tin sản phẩm</option>
+                                <option value="order">Tình trạng đơn hàng</option>
+                                <option value="return">Đổi trả & Hoàn tiền</option>
+                                <option value="shipping">Vận chuyển & Giao hàng</option>
+                                <option value="feedback">Góp ý & Phản hồi</option>
+                                <option value="other">Khác</option>
+                            </select>
+                            <div class="error-message" id="subjectError">Vui lòng chọn chủ đề</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="message">Nội Dung Tin Nhắn *</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                            <div class="error-message" id="messageError">Vui lòng nhập nội dung tin nhắn</div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span id="submitText">Gửi Tin Nhắn</span>
+                            <div id="submitLoading" style="display: none;">⏳ Đang gửi...</div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="grid-wrap">
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.424184103769!2d106.6953142750521!3d10.780776889367365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f38f7d3f535%3A0x96771d24bd346f89!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBCw6FjaCBraG9hIC0gxJDhuqFpIGjhu41jIFF14buRYyBnaWEgVFAuSENN!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="grid-wrap">
+            <div class="section-title">
+                <h2>Câu Hỏi Thường Gặp</h2>
+                <p>Những câu hỏi phổ biến về sản phẩm và dịch vụ của chúng tôi</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Làm thế nào để theo dõi đơn hàng của tôi?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Sau khi đặt hàng thành công, bạn sẽ nhận được email xác nhận với mã theo dõi đơn hàng. Bạn có thể sử dụng mã này để theo dõi tình trạng đơn hàng trên website của chúng tôi.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Chính sách đổi trả như thế nào?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Chúng tôi chấp nhận đổi trả trong vòng 30 ngày kể từ ngày nhận hàng. Sản phẩm phải còn nguyên tem mác và trong tình trạng như ban đầu. Chi phí vận chuyển đổi trả sẽ do khách hàng chịu.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Thời gian giao hàng là bao lâu?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Đối với khu vực nội thành: 1-2 ngày làm việc. Khu vực ngoại thành: 2-4 ngày làm việc. Các tỉnh thành khác: 3-7 ngày làm việc. Thời gian có thể thay đổi tùy theo tình hình thực tế.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Có hỗ trợ giao hàng quốc tế không?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Hiện tại chúng tôi chỉ hỗ trợ giao hàng trong lãnh thổ Việt Nam. Chúng tôi đang lên kế hoạch mở rộng dịch vụ giao hàng quốc tế trong tương lai gần.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Phương thức thanh toán nào được chấp nhận?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Chúng tôi chấp nhận nhiều phương thức thanh toán: Thẻ tín dụng/ghi nợ, Ví điện tử (Momo, ZaloPay), Chuyển khoản ngân hàng, và Thanh toán khi nhận hàng (COD).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="contact-cta">
+        <div class="grid-wrap">
+            <h2>Cần Hỗ Trợ Ngay Lập Tức?</h2>
+            <p>Đội ngũ hỗ trợ của chúng tôi luôn sẵn sàng giải đáp mọi thắc mắc của bạn</p>
+            <div class="cta-buttons">
+                <a href="tel:+84123456789" class="btn-white">Gọi Ngay: 0123 456 789</a>
+                <a href="mailto:support@clothesshop.com" class="btn-outline-white">Gửi Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div style="margin-top: 50px;" class="footer-brand">
+                <div class="brand" style="display: flex; justify-content: center; align-items: center;">
+                    <div style="margin-bottom: 9px;width: 55px;height: 55px;background: linear-gradient(135deg, var(--accent), #df6767);"
+                        class="logo">CS</div>
+                    <div>
+                        <div style="font-size: 20px;font-weight:700">ClothesShop</div>
+                        <div style="font-size:15px;color:var(--muted)">Everyday comfort & style</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-services">
+                <h2>Our Services</h2>
+                <ul class="text-center">
+                    <li><a href="#">Free Shipping</a></li>
+                    <li><a href="#">24/7 Customer Support</a></li>
+                    <li><a href="#">Easy Returns</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h2>Contact</h2>
+                <p>Email: info@clothesshop.com</p>
+                <p>Phone: +84 123 456 789</p>
+                <div class="social-icons">
+                    <a href="#"><img width="30" src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000"
+                            alt="Facebook"></a>
+                    <a href="#"><img width="30" src="https://img.icons8.com/?size=100&id=13963&format=png&color=000000"
+                            alt="Twitter"></a>
+                    <a href="#"><img width="30" src="https://img.icons8.com/?size=100&id=32323&format=png&color=000000"
+                            alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 ClothesShop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="js/script.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

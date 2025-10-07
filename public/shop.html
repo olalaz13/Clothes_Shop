@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clothes Shop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="nav">
+        <div class="brand">
+            <div class="logo">CS</div>
+            <div>
+                <div style="font-weight:700">ClothesShop</div>
+                <div style="font-size:12px;color:var(--muted)">Everyday comfort & style</div>
+            </div>
+        </div>
+
+        <!-- Menu -->
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="search">
+            <input id="search" placeholder="Search clothes, size, color..." />
+            <span class="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
+                    <path
+                        d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z">
+                    </path>
+                </svg>
+            </span>
+        </div>
+
+        <!-- Hamburger cho mobile -->
+        <button class="hamburger" id="hamburgerBtn">☰</button>
+
+        <div class="links" id="desktopHeaderRight">
+            <button class="btn" onclick="window.location.href='signin.html'">Sign in</button>
+            <button class="cart-btn" id="cartBtn">
+                <span class="cart-icon">🛒</span>
+                <span class="cart-text">Cart</span>
+                <span id="cartCount" class="badge">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu"></div>
+
+    <!-- Page header -->
+    <section class="grid-wrap">
+        <nav aria-label="breadcrumb" class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span>Shop</span>
+        </nav>
+        <div class="shop-banner">
+            <div class="shop-banner-content">
+                <h1 class="shop-title">Shop Collection</h1>
+                <p class="shop-subtitle">Khám phá bộ sưu tập độc đáo, lọc theo sở thích và tìm phong cách của riêng bạn
+                </p>
+                <div class="shop-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Sản phẩm</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Danh mục</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">⭐ 4.9</span>
+                        <span class="stat-label">Đánh giá</span>
+                    </div>
+                </div>
+            </div>
+            <div class="shop-banner-image">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                    alt="Fashion Collection" />
+                <div class="banner-overlay"></div>
+                <div class="floating-badge">
+                    <span>🛍️ New Arrivals</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Grid -->
+    <main class="grid-wrap">
+        <div class="shop-layout">
+            <aside class="shop-sidebar">
+                <h3 style="margin-top:0">Filters</h3>
+                <div class="filter-block">
+                    <div class="muted" style="margin-bottom:6px">Categories</div>
+                    <div class="cats" id="categories"></div>
+                </div>
+                <div class="filter-block">
+                    <div class="muted" style="margin-bottom:6px">Price:</div>
+                    <div class="row" style="gap:8px">
+                        <input id="priceMin" type="number" placeholder="Min" />
+                        <span class="muted">-</span>
+                        <input id="priceMax" type="number" placeholder="Max" />
+                    </div>
+                    <button id="applyPrice" class="btn" style="margin-top:8px;width:100%">Apply</button>
+                </div>
+                <div class="filter-block">
+                    <div class="muted" style="margin-bottom:6px">View</div>
+                    <div class="row" style="gap:6px">
+                        <button id="viewGrid" class="btn" title="Grid" style="flex:1">▦</button>
+                        <button id="viewList" class="btn" title="List" style="flex:1">≣</button>
+                    </div>
+                </div>
+            </aside>
+            <section class="shop-content">
+                <div class="shop-toolbar">
+                    <div class="row" style="gap:8px">
+                        <div><strong>All products</strong> <span class="muted" id="countTxt"></span></div>
+                    </div>
+                    <div class="row" style="gap:8px">
+                        <div class="muted">Sort</div>
+                        <select id="sort">
+                            <option value="popular">Most popular</option>
+                            <option value="asc">Price: low → high</option>
+                            <option value="desc">Price: high → low</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid" id="grid"></div>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <div id="filtersOverlay" class="overlay"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div style="margin-top: 50px;" class="footer-brand">
+                <div class="brand" style="display: flex; justify-content: center; align-items: center;">
+                    <div style="margin-bottom: 9px;width: 55px;height: 55px;background: linear-gradient(135deg, var(--accent), #df6767);"
+                        class="logo">CS</div>
+                    <div>
+                        <div style="font-size: 20px;font-weight:700">ClothesShop</div>
+                        <div style="font-size:15px;color:var(--muted)">Everyday comfort & style</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-services">
+                <h2>Our Services</h2>
+                <ul class="text-center">
+                    <li><a href="#">Free Shipping</a></li>
+                    <li><a href="#">24/7 Customer Support</a></li>
+                    <li><a href="#">Easy Returns</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h2>Contact</h2>
+                <p>Email: info@clothesshop.com</p>
+                <p>Phone: +84 123 456 789</p>
+                <div class="social-icons">
+                    <a href="#"><img width="30" src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000"
+                            alt="Facebook"></a>
+                    <a href="#"><img width="30" src="https://img.icons8.com/?size=100&id=13963&format=png&color=000000"
+                            alt="Twitter"></a>
+                    <a href="#"><img width="30" src="https://img.icons8.com/?size=100&id=32323&format=png&color=000000"
+                            alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 ClothesShop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Quick view modal -->
+    <div class="modal" id="modal">
+        <div class="modal-card">
+            <div>
+                <div class="m-thumb" id="mThumb"></div>
+            </div>
+            <div>
+                <div style="display:flex;justify-content:space-between;align-items:start">
+                    <div>
+                        <h2 id="mTitle" style="margin:0">Product title</h2>
+                        <div class="muted" id="mCat">Category</div>
+                    </div>
+                    <div><button class="close-btn" id="closeModal">✕</button></div>
+                </div>
+                <div style="margin-top:12px">
+                    <div id="mPrice" style="font-weight:800;font-size:20px">$0</div>
+                    <p id="mDesc" class="muted">Description goes here</p>
+                </div>
+                <div style="margin-top:18px;display:flex;gap:8px">
+                    <div class="dropdown" id="sizeDropdown">
+                        <select id="sizeSelect" class="form-select">
+                            <option>Size S</option>
+                            <option>Size M</option>
+                            <option>Size L</option>
+                        </select>
+                    </div>
+                    <button class="add" id="addCartModal">Add to cart</button>
+                    <button class="outline" id="favBtn">❤ Favorite</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- filters -->
+    <button id="toggleFilters" class="btn btn-primary show-on-mobile" title="Filters">Filters</button>
+
+
+    <!-- Toast -->
+    <div id="toast"></div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

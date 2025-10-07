@@ -1,0 +1,100 @@
+<!-- Page header -->
+<section class="grid-wrap">
+    <nav aria-label="breadcrumb" class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Shop</span>
+    </nav>
+    <div class="shop-banner">
+        <div class="shop-banner-content">
+            <h1 class="shop-title">Shop Collection</h1>
+            <p class="shop-subtitle">Khám phá bộ sưu tập độc đáo, lọc theo sở thích và tìm phong cách của riêng bạn
+            </p>
+            <div class="shop-stats">
+                <div class="stat-item">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Sản phẩm</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Danh mục</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">⭐ 4.9</span>
+                    <span class="stat-label">Đánh giá</span>
+                </div>
+            </div>
+        </div>
+        <div class="shop-banner-image">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                alt="Fashion Collection" />
+            <div class="banner-overlay"></div>
+            <div class="floating-badge">
+                <span>🛍️ New Arrivals</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Grid -->
+<main class="grid-wrap">
+    <div class="shop-layout">
+        <aside class="shop-sidebar">
+            <h3 style="margin-top:0">Filters</h3>
+            <div class="filter-block">
+                <div class="muted" style="margin-bottom:6px">Categories</div>
+                <div class="cats" id="categories"></div>
+            </div>
+            <div class="filter-block">
+                <div class="muted" style="margin-bottom:6px">Price:</div>
+                <div class="row" style="gap:8px">
+                    <input id="priceMin" type="number" placeholder="Min" />
+                    <span class="muted">-</span>
+                    <input id="priceMax" type="number" placeholder="Max" />
+                </div>
+                <button id="applyPrice" class="btn" style="margin-top:8px;width:100%">Apply</button>
+            </div>
+            <div class="filter-block">
+                <div class="muted" style="margin-bottom:6px">View</div>
+                <div class="row" style="gap:6px">
+                    <button id="viewGrid" class="btn" title="Grid" style="flex:1">▦</button>
+                    <button id="viewList" class="btn" title="List" style="flex:1">≣</button>
+                </div>
+            </div>
+        </aside>
+        <section class="shop-content">
+            <div class="shop-toolbar">
+                <div class="row" style="gap:8px">
+                    <div><strong>All products</strong> <span class="muted" id="countTxt"></span></div>
+                </div>
+                <div class="row" style="gap:8px">
+                    <div class="muted">Sort</div>
+                    <select id="sort">
+                        <option value="popular">Most popular</option>
+                        <option value="asc">Price: low → high</option>
+                        <option value="desc">Price: high → low</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid" id="grid"></div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </div>
+    <div id="filtersOverlay" class="overlay"></div>
+</main>
