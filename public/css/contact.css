@@ -426,8 +426,39 @@
     }
 }
 
+
+
+.info-item {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.info-icon {
+    position: absolute;
+    left: 0;
+}
+
+.social-contact {
+    margin-left: 20px;
+}
+
+
+
 /* Responsive Design */
 @media (max-width: 1024px) {
+    .info-item {
+        align-items: center;
+    }
+
+    .social-contact {
+        margin-left: 25px;
+    }
+
+    .contact-info {
+        font-size: 20px;
+    }
+
     .contact-container {
         grid-template-columns: 1fr;
         gap: 40px;

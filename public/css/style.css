@@ -142,6 +142,7 @@ body {
     background-image: url('https://vannilla-js-basic-project-26-stripe-submenus.netlify.app/images/hero.svg');
     background-repeat: no-repeat;
     background-size: cover;
+
     .hero-card {
         background: var(--glass);
         backdrop-filter: blur(20px);
@@ -149,7 +150,8 @@ body {
 }
 
 
-.hero>div, .hero>aside {
+.hero>div,
+.hero>aside {
     width: 100%;
 }
 
@@ -238,20 +240,29 @@ body {
     color: var(--muted);
     margin-bottom: 10px;
 }
-.breadcrumb a { color: inherit; text-decoration: none; }
-.breadcrumb a:hover { color: #111827; text-decoration: underline; }
+
+.breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #111827;
+    text-decoration: underline;
+}
 
 .shop-banner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
     border: 1px solid rgba(20, 24, 40, 0.04);
     border-radius: var(--radius);
     padding: 16px;
     box-shadow: var(--shadow);
 }
+
 .shop-banner img {
     width: 260px;
     height: 120px;
@@ -262,19 +273,31 @@ body {
 .grid.list-view {
     display: block;
 }
+
 .grid.list-view .card {
     display: grid;
     grid-template-columns: 160px 1fr 140px;
     align-items: center;
 }
+
 .grid.list-view .thumb {
     height: 140px;
 }
 
 @media (max-width: 800px) {
-    .shop-banner { flex-direction: column; align-items: stretch; }
-    .shop-banner img { width: 100%; height: 160px; }
-    .grid.list-view .card { grid-template-columns: 120px 1fr; }
+    .shop-banner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .shop-banner img {
+        width: 100%;
+        height: 160px;
+    }
+
+    .grid.list-view .card {
+        grid-template-columns: 120px 1fr;
+    }
 }
 
 /* ============ Shop layout with sidebar ============ */
@@ -283,6 +306,7 @@ body {
     grid-template-columns: 260px 1fr;
     gap: 18px;
 }
+
 .shop-sidebar {
     background: var(--card);
     border: 1px solid rgba(20, 24, 40, 0.06);
@@ -292,19 +316,24 @@ body {
     height: fit-content;
     top: 84px;
 }
+
 .shop-sidebar input[type="number"] {
     width: 100%;
     padding: 6px 8px;
-    border: 1px solid rgba(20,24,40,0.06);
+    border: 1px solid rgba(20, 24, 40, 0.06);
     border-radius: 8px;
 }
-.filter-block { margin-bottom: 14px; }
+
+.filter-block {
+    margin-bottom: 14px;
+}
 
 .shop-content {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
+
 .shop-toolbar {
     display: flex;
     justify-content: space-between;
@@ -318,12 +347,15 @@ body {
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
     transition: transform .2s ease, box-shadow .2s ease;
 }
 
 /* Badges on product */
-.card { position: relative; }
+.card {
+    position: relative;
+}
+
 .badge-top {
     position: absolute;
     top: 10px;
@@ -336,19 +368,43 @@ body {
 }
 
 /* Toolbar buttons active */
-.btn.active { background: var(--accent); color: #fff; }
+.btn.active {
+    background: var(--accent);
+    color: #fff;
+}
 
 
 /* Mobile improvements */
 @media (max-width: 720px) {
-    .shop-toolbar { flex-direction: column; gap: 8px; align-items: stretch; }
-    .cats { margin: 8px 0; gap: 8px; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
-    .cats::-webkit-scrollbar { height: 6px; }
-    .cats::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 8px; }
+    .shop-toolbar {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+    }
+
+    .cats {
+        margin: 8px 0;
+        gap: 8px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+    }
+
+    .cats::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .cats::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+    }
 }
 
 @media (max-width: 1000px) {
-    .shop-layout { grid-template-columns: 1fr; }
+    .shop-layout {
+        grid-template-columns: 1fr;
+    }
+
     .shop-sidebar {
         position: fixed;
         top: 0;
@@ -360,7 +416,10 @@ body {
         z-index: 2200;
         transition: left .3s ease;
     }
-    .shop-sidebar.open { left: 0; }
+
+    .shop-sidebar.open {
+        left: 0;
+    }
 }
 
 /* ================== Shop Banner ================== */
@@ -375,7 +434,7 @@ body {
     margin: 20px 0;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .shop-banner::before {
@@ -385,7 +444,7 @@ body {
     right: -20%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
     border-radius: 50%;
 }
 
@@ -411,7 +470,7 @@ body {
     margin: 0 0 30px 0;
     opacity: 0.9;
     line-height: 1.6;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .shop-stats {
@@ -437,14 +496,14 @@ body {
 .stat-label {
     font-size: 0.9rem;
     opacity: 0.8;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .shop-banner-image {
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 
 }
 
@@ -484,8 +543,15 @@ body {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* ================== Responsive Shop Banner ================== */
@@ -496,15 +562,15 @@ body {
         text-align: center;
         padding: 30px;
     }
-    
+
     .shop-title {
         font-size: 2.8rem;
     }
-    
+
     .shop-stats {
         justify-content: center;
     }
-    
+
     .shop-banner-image {
         transform: none;
         max-width: 500px;
@@ -517,24 +583,24 @@ body {
         padding: 25px;
         margin: 15px 0;
     }
-    
+
     .shop-title {
         font-size: 2.2rem;
     }
-    
+
     .shop-subtitle {
         font-size: 1.1rem;
     }
-    
+
     .shop-stats {
         gap: 20px;
         flex-wrap: wrap;
     }
-    
+
     .stat-number {
         font-size: 1.5rem;
     }
-    
+
     .shop-banner-image img {
         height: 250px;
     }
@@ -545,33 +611,33 @@ body {
         padding: 20px;
         border-radius: 16px;
     }
-    
+
     .shop-title {
         font-size: 1.8rem;
     }
-    
+
     .shop-subtitle {
         font-size: 1rem;
         margin-bottom: 20px;
     }
-    
+
     .shop-stats {
         gap: 15px;
     }
-    
+
     .stat-item {
         flex: 1;
         min-width: 80px;
     }
-    
+
     .stat-number {
         font-size: 1.3rem;
     }
-    
+
     .stat-label {
         font-size: 0.8rem;
     }
-    
+
     .floating-badge {
         top: 15px;
         right: 15px;
@@ -600,26 +666,31 @@ body {
 .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.35);
     z-index: 2100;
     opacity: 0;
     pointer-events: none;
     transition: opacity .3s ease;
 }
-.overlay.show { opacity: 1; pointer-events: auto; }
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
 
 /* Show Filters button only on mobile */
-.show-on-mobile { 
-    display: none !important; 
+.show-on-mobile {
+    display: none !important;
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 9999;
 }
-@media (max-width: 1000px) { 
-    .show-on-mobile { 
-        display: inline !important; 
-    } 
+
+@media (max-width: 1000px) {
+    .show-on-mobile {
+        display: inline !important;
+    }
 }
 
 .card {
@@ -751,6 +822,76 @@ body {
     color: #aaa;
 }
 
+/* ================== Footer Responsive ================== */
+
+
+
+/* Màn hình nhỏ (mobile dọc, 431px trở xuống) */
+@media (max-width: 431px) {
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-services ul {
+        text-align: center;
+    }
+
+    .footer-brand {
+        margin-bottom: 20px;
+    }
+
+    .footer-contact {
+        margin-top: 20px;
+    }
+
+
+
+    .footer {
+        padding: 30px 15px 15px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .footer-services ul {
+        text-align: center;
+    }
+
+    .footer-brand .brand {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-brand .brand .logo {
+        margin: 0 auto 10px;
+        width: 50px;
+        height: 50px;
+    }
+
+
+
+    .footer-services ul li {
+        margin-bottom: 6px;
+    }
+
+
+
+    .social-icons a img {
+        width: 26px;
+        margin-right: 6px;
+    }
+
+    .footer-bottom {
+        padding-top: 15px;
+    }
+}
+
 /* ================== Quick view modal ================== */
 .modal {
     position: fixed;
@@ -767,14 +908,14 @@ body {
 }
 
 .modal-card {
-        width: min(920px, 96%);
-        background: var(--card);
-        border-radius: 14px;
-        padding: 18px;
-        display: grid;
-        grid-template-columns: 420px 1fr;
-        gap: 18px;
-        box-sizing: border-box;
+    width: min(800px, 90%);
+    background: var(--card);
+    border-radius: 14px;
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 18px;
+    box-sizing: border-box;
 }
 
 @media (max-width: 800px) {
@@ -786,11 +927,25 @@ body {
         max-width: 98vw;
         min-width: 0;
     }
+
     .modal-card .m-thumb {
         height: 240px;
         border-radius: 10px;
         background-size: cover;
         background-position: center;
+    }
+}
+
+@media (max-width: 1050px) {
+    .modal-card {
+        height: 500px;
+        max-height: 80vh;
+        overflow-y: auto;
+        /* cho phép scroll khi nội dung quá cao */
+    }
+
+    .modal-option{
+        font-size: 12px;
     }
 }
 
@@ -801,13 +956,20 @@ body {
         max-width: 100vw;
         border-radius: 0;
     }
+
     .modal-card .m-thumb {
         height: 140px;
     }
-    .modal-card h2, .modal-card .muted, .modal-card #mPrice, .modal-card p {
+
+    .modal-card h2,
+    .modal-card .muted,
+    .modal-card #mPrice,
+    .modal-card p {
         font-size: 1rem !important;
     }
-    .modal-card select, .modal-card button {
+
+    .modal-card select,
+    .modal-card button {
         font-size: 0.95rem !important;
     }
 }
@@ -871,23 +1033,25 @@ body {
     transform: translateX(-50%);
     min-width: 220px;
     max-width: 90vw;
-    background: rgba(34,34,34,0.95);
+    background: rgba(34, 34, 34, 0.95);
     color: #fff;
     padding: 14px 28px;
     border-radius: 10px;
     font-size: 1rem;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
     opacity: 0;
     pointer-events: none;
     z-index: 3000;
     transition: opacity 0.3s, bottom 0.3s;
     text-align: center;
 }
+
 #toast.show {
     opacity: 1;
     pointer-events: auto;
     bottom: 56px;
 }
+
 @media (max-width: 600px) {
     #toast {
         font-size: 0.95rem;
@@ -908,7 +1072,7 @@ body {
 
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1050px) {
     .grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -951,6 +1115,7 @@ body {
     .hamburger {
         display: block;
     }
+
 }
 
 @media (max-width: 480px) {
@@ -963,6 +1128,7 @@ body {
         height: 40px;
     }
 
+
 }
 
 /* Mobile side menu */
@@ -973,7 +1139,7 @@ body {
     width: 250px;
     height: calc(100% - 60px);
     background: var(--card);
-    box-shadow: -2px 0 6px rgba(0,0,0,0.15);
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.15);
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -995,7 +1161,7 @@ body {
 }
 
 /* Show hamburger on mobile */
-@media (max-width: 800px) {
+@media (max-width: 1050px) {
     #hamburgerBtn {
         display: block;
     }
